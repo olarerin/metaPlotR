@@ -1,2 +1,2 @@
 # metaPlotR
-A Perl/R pipeline for plotting metagenes
+A Perl/R pipeline for plotting metagenes.  Download the tutorial "MetaPlotR_tutorial.html"
