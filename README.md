@@ -37,10 +37,10 @@ Next, download the extended gene prediction tables from the UCSC Table Browser (
 2.	**size_of_cds_utrs.pl** creates a file cataloging the transcriptomic coordinates of the start and end sites of the transcript regions (i.e. 5’UTR, CDS and 3’UTR).  It takes the sorted master annotation file as input (*hg19_annot.sorted.bed*) and outputs a region annotation file.  The region annotation file is necessary for determining the distance of queried sites from the transcriptomic features (i.e. transcriptional start site, start codon, stop codon and transcript end).  
   ```perl size_of_cds_utrs.pl --annot hg19_annot.sorted.bed > region_sizes.txt```   
 
-3.	**annotate_bed_file.pl** annotates the user supplied BED file (demonstrated with *m6a.sorted.bed*) containing single nucleotide genomic coordinates of sites of interest.  It serves as a wrapper for Bedtools Intersect and essentially labels every line in the user supplied BED file with the matching line (i.e. same coordinates) in the master annotation file (*hg19_annot.sorted.bed*).  The outputted file is called the annotated query file.   
+3.	**annotate_bed_file.pl** annotates the user supplied BED file (demonstrated with *m6a.sorted.bed*) containing single nucleotide genomic coordinates of sites of interest.  It serves as a wrapper for Bedtools Intersect and essentially labels every line in the user supplied BED file with the matching line (i.e. same coordinates) in the master annotation file (*hg19_annot.sorted.bed*).  The outputted file is called the annotated query file.  
   ```perl annotate_bed_file.pl --bed m6a.sorted.bed --bed2 hg19_annot.sorted.bed > annot_m6a.sorted.bed```
 
-  + Alternatively, Bedtools intersect can be evoked directly using the command:
+  + Alternatively, Bedtools intersect can be evoked directly using the command:  
   ```intersectBed -a m6a.sorted.bed -b hg19_annot.sorted.bed -sorted -wo –s > annot_m6a.sorted.bed```
 
 4.	**rel_and_abs_dist_calc.pl** identifies the region of the transcript in which the user supplied sites fall and converts the transcriptomic coordinates to metagene coordinates.  Namely, sites that occur in the 5’UTR have a value from 0 to 1, where 0 and 1 represent the 5’ and 3’ ends of the 5’UTR, respectively.  Similarly, sites in the CDS have a value from 1 to 2 and the 3’UTR 2 to 3.  The script takes as input the annotated query file *annot_miclip.cims.bed* and the region annotation file *utr_cds_ends.txt*.  The outputted distance measure file contains all the values needed to plot the metagenes.
