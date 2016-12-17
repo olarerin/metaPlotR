@@ -43,7 +43,7 @@ Next, download the extended gene prediction tables from the UCSC Table Browser (
   + Alternatively, Bedtools intersect can be evoked directly using the command:  
   ```intersectBed -a m6a.sorted.bed -b hg19_annot.sorted.bed -sorted -wo –s > annot_m6a.sorted.bed```
 
-4.	**rel_and_abs_dist_calc.pl** identifies the region of the transcript in which the user supplied sites fall and converts the transcriptomic coordinates to metagene coordinates.  Namely, sites that occur in the 5’UTR have a value from 0 to 1, where 0 and 1 represent the 5’ and 3’ ends of the 5’UTR, respectively.  Similarly, sites in the CDS have a value from 1 to 2 and the 3’UTR 2 to 3.  The script takes as input the annotated query file *annot_miclip.cims.bed* and the region annotation file *utr_cds_ends.txt*.  The outputted distance measure file contains all the values needed to plot the metagenes.
+4.	**rel_and_abs_dist_calc.pl** identifies the region of the transcript in which the user supplied sites fall and converts the transcriptomic coordinates to metagene coordinates.  Namely, sites that occur in the 5’UTR have a value from 0 to 1, where 0 and 1 represent the 5’ and 3’ ends of the 5’UTR, respectively.  Similarly, sites in the CDS have a value from 1 to 2 and the 3’UTR 2 to 3.  The script takes as input the annotated query file *annot_miclip.cims.bed* and the region annotation file *utr_cds_ends.txt*.  The outputted distance measure file contains all the values needed to plot the metagenes.  
   ```perl rel_and_abs_dist_calc.pl --bed annot_m6a.sorted.bed --regions region_sizes.txt > m6a.dist.measures.txt```
 
 ### Understanding the distance measure file
