@@ -28,7 +28,7 @@ Next, download the extended gene prediction tables from the UCSC Table Browser (
 
 ####Pre-process data
 
-1. **make_annot_bed.pl** creates a master annotation file (bed format) of every nucleotide in the transcriptome.  The script is supplied with the locations of the genome directory (chroms/) and the gene prediction table (hg19_gencode.genePred):
+1. **make_annot_bed.pl** creates a master annotation file (bed format) of every nucleotide in the transcriptome.  The script is supplied with the locations of the genome directory (chroms/) and the gene prediction table (hg19_gencode.genePred):  
   ```perl make_annot_bed.pl --genomeDir chroms/ --genePred hg19_gencode.genePred > hg19_annot.bed```  
   
   + Sort the master annotation file using the unix sort command:   
