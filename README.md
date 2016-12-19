@@ -32,7 +32,7 @@ Next, download the extended gene prediction tables from the UCSC Table Browser (
   ```perl make_annot_bed.pl --genomeDir chroms/ --genePred hg19_gencode.genePred > hg19_annot.bed```  
   
   + Sort the master annotation file using the unix sort command:   
-  ```sort –k1,1 –k2,2n hg19_annot.bed > hg19_annot.sorted.bed```
+  ```sort -k1,1 -k2,2n hg19_annot.bed > hg19_annot.sorted.bed```
 
 2.	**size_of_cds_utrs.pl** creates a file cataloging the transcriptomic coordinates of the start and end sites of the transcript regions (i.e. 5’UTR, CDS and 3’UTR).  It takes the sorted master annotation file as input (*hg19_annot.sorted.bed*) and outputs a region annotation file.  The region annotation file is necessary for determining the distance of queried sites from the transcriptomic features (i.e. transcriptional start site, start codon, stop codon and transcript end).  
   ```perl size_of_cds_utrs.pl --annot hg19_annot.sorted.bed > region_sizes.txt```   
