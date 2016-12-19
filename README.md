@@ -5,7 +5,7 @@ MetaPlotR is a Perl/R pipeline for creating metagene plots.  A metagene is a den
 
 ###Requirements
 1.  Unix/Linux based operating system (tested with Debian 7.8 and OS X 10.10.5)  
-2.  Perl (tested with version 5.22.2)  
+2.  Perl (tested with version 5.22.2); BioPerl module
 3.  R (tested with version 3.2.2); "scales" and "ggplot2" packages
 4.  Bedtools (tested with version 2.22.1)  
 
