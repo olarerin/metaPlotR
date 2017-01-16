@@ -94,7 +94,7 @@ The last three columns contain the lengths of the 5'UTRs, coding sequences and 3
 
 ### Selecting gene isoforms for metagene analysis
 
-The dataset is redundant -- a given site is represented by multiple transcript isoforms. The choice of which isoforms to choose should be informed by the underlying biology. For example, if a gene expression dataset is available, one option may be to pick the highest expressed isoform. Another option is to pick the longest isoform, which is likely to capture more sites. Below is sample code for picking the largest isoforms
+The dataset is redundant -- a given site is represented by multiple transcript isoforms. The choice of which isoforms to choose should be informed by the underlying biology. For example, if a gene expression dataset is available, one option may be to pick the highest expressed isoform. Another option is to pick the longest isoform, which is likely to capture more sites. Below is sample code for picking the longest isoforms
 
 ``` r
 # Determine longest length transcript for each gene
@@ -106,6 +106,8 @@ temp.df <- temp[!duplicated(temp$gene_name),]
 
 # limit m6a data to one transcript per gene (longest)
 m6a <- m6a.dist[m6a.dist$refseqID %in% temp.df$gid,]
+
+# View size of our dataset (rows, columns)
 dim(m6a.dist)
 ```
 
