@@ -27,7 +27,7 @@ Download genome of interest from the UCSC genome browser download page (<http://
 
 Next, download the extended gene prediction tables from the UCSC Table Browser (<http://genome.ucsc.edu/cgi-bin/hgTables>). The figure below shows the necessary drop-down options to download the gencode gene annotations for the hg19 human genome.
 
-![UCSC Genome browser screen capture.](/Users/ao/Dropbox/Jaffrey/Manuscripts/metagene/UCSC_screenshot.png)
+![UCSC Genome browser screen capture.](MetaPlotR_tutorial_files/figure-markdown_githubUCSC_screenshot.png)
 
 #### Pre-process data
 
