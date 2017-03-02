@@ -34,17 +34,23 @@ Next, download the extended gene prediction tables from the UCSC Table Browser (
 1.  **make\_annot\_bed.pl** creates a master annotation file (bed format) of every nucleotide in the transcriptome. The script is supplied with the locations of the genome directory (chroms/) and the gene prediction table (hg19\_gencode.genePred): `perl make_annot_bed.pl --genomeDir chroms/ --genePred hg19_gencode.genePred > hg19_annot.bed`
 
 -   Sort the master annotation file using the unix sort command:
-    `sort –k1,1 –k2,2n hg19_annot.bed > hg19_annot.sorted.bed`
+`sort –k1,1 –k2,2n hg19_annot.bed > hg19_annot.sorted.bed`
 
 2.  **size\_of\_cds\_utrs.pl** creates a file cataloging the transcriptomic coordinates of the start and end sites of the transcript regions (i.e. 5’UTR, CDS and 3’UTR). It takes the sorted master annotation file as input (*hg19\_annot.sorted.bed*) and outputs a region annotation file. The region annotation file is necessary for determining the distance of queried sites from the transcriptomic features (i.e. transcriptional start site, start codon, stop codon and transcript end).
-    `perl size_of_cds_utrs.pl --annot hg19_annot.sorted.bed > region_sizes.txt`
+
+`perl size_of_cds_utrs.pl --annot hg19_annot.sorted.bed > region_sizes.txt`
 
 3.  **annotate\_bed\_file.pl** annotates the user supplied BED file (demonstrated with *m6a.sorted.bed*) containing single nucleotide genomic coordinates of sites of interest. It serves as a wrapper for Bedtools Intersect and essentially labels every line in the user supplied BED file with the matching line (i.e. same coordinates) in the master annotation file (*hg19\_annot.sorted.bed*). The outputted file is called the annotated query file.
-    `perl annotate_bed_file.pl --bed m6a.sorted.bed --bed2 hg19_annot.sorted.bed > annot_m6a.sorted.bed`
 
--   Alternatively, Bedtools intersect can be evoked directly using the command: `intersectBed -a m6a.sorted.bed -b hg19_annot.sorted.bed -sorted -wo –s > annot_m6a.sorted.bed`
+`perl annotate_bed_file.pl --bed m6a.sorted.bed --bed2 hg19_annot.sorted.bed > annot_m6a.sorted.bed`
 
-4.  **rel\_and\_abs\_dist\_calc.pl** identifies the region of the transcript in which the user supplied sites fall and converts the transcriptomic coordinates to metagene coordinates. Namely, sites that occur in the 5’UTR have a value from 0 to 1, where 0 and 1 represent the 5’ and 3’ ends of the 5’UTR, respectively. Similarly, sites in the CDS have a value from 1 to 2 and the 3’UTR 2 to 3. The script takes as input the annotated query file *annot\_miclip.cims.bed* and the region annotation file *utr\_cds\_ends.txt*. The outputted distance measure file contains all the values needed to plot the metagenes. `perl rel_and_abs_dist_calc.pl --bed annot_m6a.sorted.bed --regions region_sizes.txt > m6a.dist.measures.txt`
+-   Alternatively, Bedtools intersect can be evoked directly using the command: 
+
+`intersectBed -a m6a.sorted.bed -b hg19_annot.sorted.bed -sorted -wo –s > annot_m6a.sorted.bed`
+
+4.  **rel\_and\_abs\_dist\_calc.pl** identifies the region of the transcript in which the user supplied sites fall and converts the transcriptomic coordinates to metagene coordinates. Namely, sites that occur in the 5’UTR have a value from 0 to 1, where 0 and 1 represent the 5’ and 3’ ends of the 5’UTR, respectively. Similarly, sites in the CDS have a value from 1 to 2 and the 3’UTR 2 to 3. The script takes as input the annotated query file *annot\_miclip.cims.bed* and the region annotation file *utr\_cds\_ends.txt*. The outputted distance measure file contains all the values needed to plot the metagenes. 
+
+`perl rel_and_abs_dist_calc.pl --bed annot_m6a.sorted.bed --regions region_sizes.txt > m6a.dist.measures.txt`
 
 ### Understanding the distance measure file
 
