@@ -114,7 +114,7 @@ temp.df <- temp[order(temp$gene_name, temp$gid, -temp$trx_len),]
 temp.df <- temp[!duplicated(temp$gene_name),]
 
 # limit m6a data to one transcript per gene (longest)
-m6a <- m6a.dist[m6a.dist$refseqID %in% temp.df$gid,]
+m6a.dist <- m6a.dist[m6a.dist$refseqID %in% temp.df$gid,]
 
 # View size of our dataset (rows, columns)
 dim(m6a.dist)
