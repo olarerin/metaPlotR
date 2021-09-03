@@ -15,9 +15,9 @@ MetaPlotR is a Perl/R pipeline for creating metagene plots. A metagene is a dens
 
 A six-column BED file (i.e. BED6) is required (see [here](https://genome.ucsc.edu/FAQ/FAQformat#format1) for specifications -- Note: columns 4 and 5 can be arbitrary). This tutorial uses a BED file of N6-methyladenosine (m6A) sites generated from Linder *et al.* Nat. Methods, 2015 (m6a.sorted.bed) and one of pseudouridine sites (pseudoU) genrated from Schraga *et al.* Cell, 2014 (pseudoU.sorted.bed). The sample BED files are located in the Github repository along with the MetaPlotR scripts. This files were sorted using the Unix sort command:
 
-`sort –k1,1 –k2,2n m6a.bed > m6a.sorted.bed`
+`sort -k1,1 -k2,2n m6a.bed > m6a.sorted.bed`
 
-`sort –k1,1 –k2,2n pseudoU.bed > pseudoU.sorted.bed`
+`sort -k1,1 -k2,2n pseudoU.bed > pseudoU.sorted.bed`
 
 NOTE: MetaPlotR expects a bed file with 0-based single nucleotide coordinates.
 
