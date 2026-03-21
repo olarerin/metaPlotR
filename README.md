@@ -4,7 +4,7 @@ MetaPlotR is a Perl/R pipeline for creating metagene plots. A metagene is a dens
 
 ### Requirements
 
-1.  Unix/Linux based operating system (tested with Debian 7.8 and OS X 10.10.5)
+1.  Unix/Linux-based operating system (tested with Debian 7.8 and OS X 10.10.5)
 2.  Perl (tested with version 5.22.2)
 3.  R (tested with version 3.2.2); "scales" and "ggplot2" packages
 4.  Bedtools (tested with version 2.22.1)
@@ -25,9 +25,18 @@ NOTE: MetaPlotR expects a bed file with 0-based single nucleotide coordinates.
 
 Download genome of interest from the UCSC genome browser download page (<http://hgdownload.soe.ucsc.edu/downloads.html>). Here we use the hg19 human genome located here (<http://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz>).
 
-Next, download the extended gene prediction tables from the UCSC Table Browser (<http://genome.ucsc.edu/cgi-bin/hgTables>). The figure below shows the necessary drop-down options to download the gencode gene annotations for the hg19 human genome.
+Decompress the downloaded genomic sequence directory:
 
-![UCSC Genome browser screen capture.](MetaPlotR_tutorial_files/figure-markdown_github/UCSC_screenshot.png)
+`tar -xvf chromFa.tar.gz`
+
+Next, download the extended gene prediction tables also from the UCSC downloads page under "Annotations" => "SQL table dump annotations". Here we use the hg19 gencode basic table located here (<https://hgdownload.gi.ucsc.edu/goldenPath/hg19/database/wgEncodeGencodeBasicV19.txt.gz>).
+
+Decompress the annotation file, select lines containing just the major chromosomes, and name the output **hg19\_gencode.genePred** (for legacy MetaPlotR code compatability):
+
+`tar -xvf wgEncodeGencodeBasicV19.txt.gz`
+
+`grep -P "chr(\d+|[XYM])\t" wgEncodeGencodeBasicV19.txt > hg19_gencode.genePred`
+
 
 #### Pre-process data
 
